@@ -79,5 +79,6 @@ class Game{
 
     end(){
         game.update(2);
+        console.log("Game Ended");
     }
 }
