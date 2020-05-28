@@ -37,8 +37,11 @@ class Game{
         form.hide();
 
         Player.getPlayerInfo();
+        Player.getPlayersAtEnd();
 
         if(allPlayers !== undefined){
+            background('#c68767')
+
             var index = 0;
             var x = 0;
             var y;
@@ -53,7 +56,7 @@ class Game{
                 players[index - 1].y = y;
 
                 if(index === player.index){
-                    cars[index-1].shapeColor = "red";
+                    players[index-1].shapeColor = "red";
                     camera.position.x = displayWidth/2;
                     camera.position.y = players[index-1].y;
                 }
@@ -61,9 +64,27 @@ class Game{
         }
 
         if(keyIsDown(UP_ARROW) && player.index !== null){
-            player.distance += 20;
+            player.distance += 10;
             player.update();
         }
+
+        if(player.distance > 3860){
+            gameState = 2;
+            player.rank += 1;
+            Player.updatePlayersAtEnd(player.rank);
+            textSize(30);
+            textStyle(BOLD);
+            textFont("Algeria");
+            strokeWeight(5);
+            stroke(0);
+            fill(0,200,0);
+            text(player.name + ":" + player.distance,100,100);
+        }
+
         drawSprites();
+    }
+
+    end(){
+        game.update(2);
     }
 }
