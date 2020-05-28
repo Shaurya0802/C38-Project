@@ -72,13 +72,6 @@ class Game{
             gameState = 2;
             player.rank += 1;
             Player.updatePlayersAtEnd(player.rank);
-            textSize(30);
-            textStyle(BOLD);
-            textFont("Algeria");
-            strokeWeight(5);
-            stroke(0);
-            fill(0,200,0);
-            text(player.name + ":" + player.distance,100,100);
         }
 
         drawSprites();
